@@ -82,7 +82,7 @@ def move():
 
     return {
         'move': direction,
-        'taunt': td0
+        'taunt': td0 + direction
     }
 
 
