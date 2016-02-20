@@ -39,19 +39,11 @@ def move():
     # TODO: Do things with data
     direction = 'north'
     r=random.randint(0,3)
-    mv=0
-    if r==0:
-        mv='north'
-    if r==1:
-        mv='east'
-    if r==2:
-        mv='south'
-    if r==3:
-        mv='west'
+    mv={'north','east','south','west'}
     
     if not data["food"]:
         return{
-            'move': mv,
+            'move': mv[r],
             'taunt':'AHHHHHHHHHH'
         }
     for wolf in data["snakes"]:
