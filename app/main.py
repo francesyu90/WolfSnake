@@ -40,7 +40,28 @@ def move():
         if wolf["id"]="afdccc0a-2f55-4092-b5b7-b65ab9a30b1e":
             self=wolf
     
-    #find closest food
+
+
+    # TODO: Do things with data
+    direction = 'north'
+    r=random.randint(0,3)
+    mv=['north','east','south','west']
+    if self['coords'][0][0]==0:
+        mv.remove('west')
+    elif self['coords'][0][0]==data["width"]-1:
+        mv.remove('east')
+    elif self['coords'][0][1]==0:
+        mv.remove('north')
+    elif self['coords'][0][1]==data["height"]-1:
+        mv.remove('south')
+    
+    if not data["food"]:
+        return{
+            'move': mv[r],
+            'taunt':'AHHHHHHHHHH'
+        }
+
+     #find closest food
     closest_food=data["food"][0]
     td0=10,000
     for pellet in data["food"]:
@@ -50,17 +71,6 @@ def move():
         if td1<td0:
             closest_food=pellet
             td0=td1
-
-    # TODO: Do things with data
-    direction = 'north'
-    r=random.randint(0,3)
-    mv={'north','east','south','west'}
-    
-    if not data["food"]:
-        return{
-            'move': mv[r],
-            'taunt':'AHHHHHHHHHH'
-        }
 
     if closest_food[0]<self["coords"][0][0]:
         direction='west'
