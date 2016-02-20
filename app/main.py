@@ -39,15 +39,16 @@ def move():
     # TODO: Do things with data
     direction = 'north'
     test=data["food"]
-    for wolf in data["snakes"]:
-        if wolf["id"]=="afdccc0a-2f55-4092-b5b7-b65ab9a30b1e":
-#            if data["food"][0][0]<wolf["coords"][0][0]:
-                direction='west'
-#            elif data["food"][0][0]>wolf["coords"][0][0]:
-#                direction='east'
-#            else:
-#                if data["food"][0][1]>wolf["coords"][0][1]:
-#                    direction='south'
+    if test:
+        for wolf in data["snakes"]:
+            if wolf["id"]=="afdccc0a-2f55-4092-b5b7-b65ab9a30b1e":
+                if data["food"][0][0]<wolf["coords"][0][0]:
+                    direction='west'
+                elif data["food"][0][0]>wolf["coords"][0][0]:
+                    direction='east'
+                else:
+                    if data["food"][0][1]>wolf["coords"][0][1]:
+                        direction='south'
 
     return {
         'move': test,
