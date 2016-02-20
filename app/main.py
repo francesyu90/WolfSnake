@@ -35,14 +35,17 @@ def start():
 def move():
     data = bottle.request.json
     
+    #find self
+    for wolf in data["snakes"]:
+        if wolf["id"]="afdccc0a-2f55-4092-b5b7-b65ab9a30b1e":
+            self=wolf
+    
+
 
     # TODO: Do things with data
     direction = 'north'
     r=random.randint(0,3)
     mv=['north','east','south','west']
-    for wolf in data["snakes"]:
-        if wolf["id"]=="afdccc0a-2f55-4092-b5b7-b65ab9a30b1e":
-            self=wolf
     if self['coords'][0][0]==0:
         mv.remove('west')
     elif self['coords'][0][0]==data["width"]-1:
@@ -57,13 +60,24 @@ def move():
             'move': mv[r],
             'taunt':'AHHHHHHHHHH'
         }
-    
-    if data["food"][0][0]<self["coords"][0][0] and 'west' in mv:
+
+     #find closest food
+    closest_food=data["food"][0]
+    td0=10,000
+    for pellet in data["food"]:
+        hd1=pellet[0]-self["coords"][0]
+        vd1=pellet[1]-self["coords"][1]
+        td1=(hd1**2+vd1**2)**(1/2)
+        if td1<td0:
+            closest_food=pellet
+            td0=td1
+
+    if closest_food[0]<self["coords"][0][0]:
         direction='west'
-    elif data["food"][0][0]>self["coords"][0][0] and 'east' in mv:
+    elif closest_food[0]>self["coords"][0][0]:
         direction='east'
     else:
-        if data["food"][0][1]>self["coords"][0][1] and 'south' in mv:
+        if closest_food[1]>self["coords"][0][1]:
             direction='south'
 
     return {
