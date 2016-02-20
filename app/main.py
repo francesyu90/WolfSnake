@@ -45,7 +45,7 @@ def move():
             elif data["food"][0][0]>wolf["coords"][0][0]:
                 direction='east'
             else:
-                if data["food"][0][1]>wolf["coords"]:
+                if data["food"][0][1]>wolf["coords"][0][1]:
                     direction='south'
 
     return {
