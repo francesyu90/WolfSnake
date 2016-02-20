@@ -37,7 +37,7 @@ def move():
     
     #find self
     for wolf in data["snakes"]:
-        if wolf["id"]="afdccc0a-2f55-4092-b5b7-b65ab9a30b1e":
+        if wolf["id"]=="afdccc0a-2f55-4092-b5b7-b65ab9a30b1e":
             self=wolf
     
 
