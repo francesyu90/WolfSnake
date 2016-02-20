@@ -42,26 +42,29 @@ def move():
     mv=['north','east','south','west']
     for wolf in data["snakes"]:
         if wolf["id"]=="afdccc0a-2f55-4092-b5b7-b65ab9a30b1e":
-            if wolf['coords'][0][0]==0:
-                mv.remove('west')
-            if wolf['coords'][0][0]==data["width"]-1:
-                mv.remove('east')
-            if wolf['coords'][0][1]==0:
-                mv.remove('north')
-            if wolf['coords'][0][1]==data["height"]-1:
-                mv.remove('south')
-            if not data["food"]:
-                return{
-                    'move': mv[r],
-                    'taunt':'AHHHHHHHHHH'
-                }
-            if data["food"][0][0]<wolf["coords"][0][0] and 'west' in mv:
-                direction='west'
-            elif data["food"][0][0]>wolf["coords"][0][0] and 'east' in mv:
-                direction='east'
-            else:
-                if data["food"][0][1]>wolf["coords"][0][1] and 'south' in mv:
-                    direction='south'
+            self=wolf
+    if self['coords'][0][0]==0:
+        mv.remove('west')
+    elif self['coords'][0][0]==data["width"]-1:
+        mv.remove('east')
+    elif self['coords'][0][1]==0:
+        mv.remove('north')
+    elif self['coords'][0][1]==data["height"]-1:
+        mv.remove('south')
+    
+    if not data["food"]:
+        return{
+            'move': mv[r],
+            'taunt':'AHHHHHHHHHH'
+        }
+    
+    if data["food"][0][0]<self["coords"][0][0] and 'west' in mv:
+        direction='west'
+    elif data["food"][0][0]>self["coords"][0][0] and 'east' in mv:
+        direction='east'
+    else:
+        if data["food"][0][1]>self["coords"][0][1] and 'south' in mv:
+            direction='south'
 
     return {
         'move': direction,
