@@ -27,7 +27,7 @@ def start():
     # TODO: Do things with data
 
     return {
-        data[0],
+        data,
         'taunt': 'battlesnake-python!'
     }
 
