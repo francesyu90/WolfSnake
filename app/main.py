@@ -67,7 +67,7 @@ def move():
     for pellet in data["food"]:
         hd1=pellet[0]-self["coords"][0][0]
         vd1=pellet[1]-self["coords"][0][1]
-        td1=(hd1**2+vd1**2)**(1/2)
+        td1=((hd1**2)+(vd1**2))**(1/2)
         if td1<td0:
             closest_food=pellet
             td0=td1
@@ -82,7 +82,7 @@ def move():
 
     return {
         'move': direction,
-        'taunt': 'battlesnake-python!'
+        'taunt': td0
     }
 
 
