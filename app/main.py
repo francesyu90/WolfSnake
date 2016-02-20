@@ -1,6 +1,6 @@
 import bottle
 import os
-
+import random
 
 @bottle.route('/static/<path:path>')
 def static(path):
@@ -38,17 +38,31 @@ def move():
 
     # TODO: Do things with data
     direction = 'north'
-    test=data["food"]
-    if test:
-        for wolf in data["snakes"]:
-            if wolf["id"]=="afdccc0a-2f55-4092-b5b7-b65ab9a30b1e":
-                if data["food"][0][0]<wolf["coords"][0][0]:
-                    direction='west'
-                elif data["food"][0][0]>wolf["coords"][0][0]:
-                    direction='east'
-                else:
-                    if data["food"][0][1]>wolf["coords"][0][1]:
-                        direction='south'
+    r=random.randint(0,3)
+    mv=0
+    if r==0:
+        mv='north'
+    if r==1:
+        mv='east'
+    if r==2:
+        mv='south'
+    if r==3:
+        mv='west'
+    
+    if not data["food"]:
+        return{
+            'move': mv,
+            'taunt':'AHHHHHHHHHH'
+        }
+    for wolf in data["snakes"]:
+        if wolf["id"]=="afdccc0a-2f55-4092-b5b7-b65ab9a30b1e":
+#            if data["food"][0][0]<wolf["coords"][0][0]:
+                direction='west'
+#            elif data["food"][0][0]>wolf["coords"][0][0]:
+#                direction='east'
+#            else:
+#                if data["food"][0][1]>wolf["coords"][0][1]:
+#                    direction='south'
 
     return {
         'move': test,
