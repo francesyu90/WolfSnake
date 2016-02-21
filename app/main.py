@@ -9,13 +9,14 @@ def static(path):
 
 @bottle.get('/')
 def index():
-    head_url = '%s://%s/static/head.png' % (
-        bottle.request.urlparts.scheme,
-        bottle.request.urlparts.netloc
-    )
+    head_url = 'http://wallpapersinhq.pw/images/big/scarface-148756.jpg' 
+    #'%s://%s/static/head.png' % (
+     #   bottle.request.urlparts.scheme,
+      #  bottle.request.urlparts.netloc
+    #)
 
     return {
-        'color': '#980000',
+        'color': '#000048',
         'head': head_url
     }
 
