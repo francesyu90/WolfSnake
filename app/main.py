@@ -101,6 +101,10 @@ def move():
     elif closest_food[1]>self["coords"][0][1] and 'south' in mv:
         direction='south'
 
+    ff=random.randint(0,3)
+    if data['turn']%5==0:
+        direction=mv[ff]
+
     return {
         'move': direction,
         'taunt': tnt
