@@ -28,7 +28,7 @@ def start():
     # TODO: Do things with data
 
     return {
-        'taunt': 'battlesnake-python!'
+        'taunt': "I'm hangry!"
     }
 
 
@@ -57,9 +57,11 @@ def move():
                 mv.remove('north')
             elif square[0]==self["coords"][0][0] and square[1]-1==self['coords'][0][1]:#neck is south of head
                 mv.remove('south')
-        
-        
-        
+    
+    if data['turn']%5==0:
+        t=random.randint(0,7)
+        tnta=[["You're going up!"],['Baaaaa'],['You look in a mirror. You see me'],['haHAAAA!'],['What is looove?'],["Baby don't hurt meeeee"],['Predicting your loss is easy'],['I will never truly die']]
+        tnt=tnta[t]
         
     if self['coords'][0][0]==0:
         mv.remove('west')
@@ -69,11 +71,11 @@ def move():
         mv.remove('north')
     elif self['coords'][0][1]==data["height"]-1:
         mv.remove('south')
-    
+                    
     if not data["food"]:
         return{
             'move': mv[r],
-            'taunt':'egfgf'
+            'taunt':tnt
         }
 
      #find closest food
@@ -101,7 +103,7 @@ def move():
 
     return {
         'move': direction,
-        'taunt': mv
+        'taunt': tnt
     }
 
 
@@ -112,7 +114,7 @@ def end():
     # TODO: Do things with data
 
     return {
-        'taunt': 'battlesnake-python!'
+        'taunt': "It's all over!"
     }
 
 
