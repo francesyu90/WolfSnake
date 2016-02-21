@@ -42,8 +42,7 @@ def move():
     
 
 
-    # TODO: Do things with data
-    direction = 'north'
+    # TODO: Do things with datax
     r=random.randint(0,3)
     mv=['north','east','south','west']
     if self['coords'][0][0]==0:
@@ -72,13 +71,13 @@ def move():
             closest_food=pellet
             td0=td1
 
+    direction = 'north'
     if closest_food[0]<self["coords"][0][0]:
         direction='west'
     elif closest_food[0]>self["coords"][0][0]:
         direction='east'
-    else:
-        if closest_food[1]>self["coords"][0][1]:
-            direction='south'
+    elif closest_food[1]>self["coords"][0][1]:
+        direction='south'
 
     return {
         'move': direction,
