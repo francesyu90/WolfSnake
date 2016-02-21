@@ -45,6 +45,19 @@ def move():
     # TODO: Do things with datax
     r=random.randint(0,3)
     mv=['north','east','south','west']
+    if self['coords'][1][0]==self['coords'][0][0]:#neck is not above or below head
+        if self['coords'][1][1]<self['coords'][0][1]:#neck is west of head
+            mv.remove('west')
+        elif self['coords'][1][1]>self['coords'][0][1]:#neck is east of head
+            mv.remove('east')
+    elif self['coords'][1][0]>self['coords'][0][0]:#neck is north of head
+        mv.remove('north')
+    elif self['coords'][1][0]<self['coords'][0][0]:#neck is south of head
+        mv.remove('south')
+        
+        
+        
+        
     if self['coords'][0][0]==0:
         mv.remove('west')
     elif self['coords'][0][0]==data["width"]-1:
@@ -71,17 +84,21 @@ def move():
             closest_food=pellet
             td0=td1
 
-    direction = 'north'
-    if closest_food[0]<self["coords"][0][0]:
+    if 'north' in mv: direction = 'north'
+    elif 'east' in mv: direction = 'east'
+    elif 'south' in mv: direction = 'south'
+    elif 'west' in mv: direction = 'west'
+    
+    if closest_food[0]<self["coords"][0][0] and 'west' in mv:
         direction='west'
-    elif closest_food[0]>self["coords"][0][0]:
+    elif closest_food[0]>self["coords"][0][0] and 'east' in mv:
         direction='east'
-    elif closest_food[1]>self["coords"][0][1]:
+    elif closest_food[1]>self["coords"][0][1] and 'south' in mv:
         direction='south'
 
     return {
         'move': direction,
-        'taunt': td0
+        'taunt': 'haHAAAAA'
     }
 
 
