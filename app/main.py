@@ -50,9 +50,9 @@ def move():
             mv.remove('west')
         elif self['coords'][1][0]>self['coords'][0][0]:#neck is east of head
             mv.remove('east')
-    elif self['coords'][1][1]>self['coords'][0][1]:#neck is north of head
+    elif self['coords'][1][1]<self['coords'][0][1]:#neck is north of head
         mv.remove('north')
-    elif self['coords'][1][1]<self['coords'][0][1]:#neck is south of head
+    elif self['coords'][1][1]>self['coords'][0][1]:#neck is south of head
         mv.remove('south')
         
         
