@@ -100,7 +100,7 @@ def move():
 
     return {
         'move': direction,
-        'taunt': self['coords'][0][1]
+        'taunt': mv
     }
 
 
