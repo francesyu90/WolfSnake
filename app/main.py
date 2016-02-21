@@ -47,16 +47,15 @@ def move():
     mv=['north','east','south','west']
     for snake in data['snakes']:
         for square in snake['coords']:
-            
-    if square[1]==self['coords'][0][1]:#neck is not above or below head
-        if square[0]+1==self['coords'][0][0]:#neck is west of head
-            mv.remove('west')
-        elif square[0]-1==self['coords'][0][0]:#neck is east of head
-            mv.remove('east')
-    elif square[1]+1==self['coords'][0][1]:#neck is north of head
-        mv.remove('north')
-    elif square[1]-1==self['coords'][0][1]:#neck is south of head
-        mv.remove('south')
+            if square[1]==self['coords'][0][1]:#neck is not above or below head
+                if square[0]+1==self['coords'][0][0]:#neck is west of head
+                    mv.remove('west')
+                elif square[0]-1==self['coords'][0][0]:#neck is east of head
+                    mv.remove('east')
+            elif square[1]+1==self['coords'][0][1]:#neck is north of head
+                mv.remove('north')
+            elif square[1]-1==self['coords'][0][1]:#neck is south of head
+                mv.remove('south')
         
         
         
