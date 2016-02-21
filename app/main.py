@@ -45,14 +45,17 @@ def move():
     # TODO: Do things with datax
     r=random.randint(0,3)
     mv=['north','east','south','west']
-    if self['coords'][1][1]==self['coords'][0][1]:#neck is not above or below head
-        if self['coords'][1][0]<self['coords'][0][0]:#neck is west of head
+    for snake in data['snakes']:
+        for square in snake['coords']:
+            
+    if square[1]==self['coords'][0][1]:#neck is not above or below head
+        if square[0]<self['coords'][0][0]:#neck is west of head
             mv.remove('west')
-        elif self['coords'][1][0]>self['coords'][0][0]:#neck is east of head
+        elif square[0]>self['coords'][0][0]:#neck is east of head
             mv.remove('east')
-    elif self['coords'][1][1]<self['coords'][0][1]:#neck is north of head
+    elif square[1]<self['coords'][0][1]:#neck is north of head
         mv.remove('north')
-    elif self['coords'][1][1]>self['coords'][0][1]:#neck is south of head
+    elif square[1]>self['coords'][0][1]:#neck is south of head
         mv.remove('south')
         
         
