@@ -72,7 +72,7 @@ def move():
     if not data["food"]:
         return{
             'move': mv[r],
-            'taunt':mv
+            'taunt':'egfgf'
         }
 
      #find closest food
@@ -100,7 +100,7 @@ def move():
 
     return {
         'move': direction,
-        'taunt': mv
+        'taunt': self['coords'][0][1]
     }
 
 
